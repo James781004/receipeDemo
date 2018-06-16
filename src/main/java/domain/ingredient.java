@@ -3,10 +3,12 @@ package domain;
 import java.math.BigDecimal;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 public class ingredient {
@@ -16,6 +18,17 @@ public class ingredient {
 	private Long id;
 	private String descirption;
 	private BigDecimal amount;
+
+	@OneToOne(fetch = FetchType.EAGER)
+	private unitOfMeasure uom;
+
+	public unitOfMeasure getUom() {
+		return uom;
+	}
+
+	public void setUom(unitOfMeasure uom) {
+		this.uom = uom;
+	}
 
 	@ManyToOne
 	private recipe recipe;
