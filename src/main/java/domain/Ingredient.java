@@ -11,27 +11,29 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
-public class ingredient {
+public class Ingredient {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String descirption;
+	private String description;
 	private BigDecimal amount;
 
 	@OneToOne(fetch = FetchType.EAGER)
-	private unitOfMeasure uom;
-
-	public unitOfMeasure getUom() {
-		return uom;
-	}
-
-	public void setUom(unitOfMeasure uom) {
-		this.uom = uom;
-	}
+	private UnitOfMeasure uom;
 
 	@ManyToOne
-	private recipe recipe;
+	private Recipe recipe;
+
+	public Ingredient() {
+	}
+
+	public Ingredient(String description, BigDecimal amount, UnitOfMeasure uom, Recipe recipe) {
+		this.description = description;
+		this.amount = amount;
+		this.uom = uom;
+		this.recipe = recipe;
+	}
 
 	public Long getId() {
 		return id;
@@ -41,12 +43,12 @@ public class ingredient {
 		this.id = id;
 	}
 
-	public String getDescirption() {
-		return descirption;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setDescirption(String descirption) {
-		this.descirption = descirption;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public BigDecimal getAmount() {
@@ -57,16 +59,19 @@ public class ingredient {
 		this.amount = amount;
 	}
 
-	public recipe getRecipe() {
+	public Recipe getRecipe() {
 		return recipe;
 	}
 
-	public void setRecipe(recipe recipe) {
+	public void setRecipe(Recipe recipe) {
 		this.recipe = recipe;
 	}
 
-	@Override
-	public String toString() {
-		return "ingredient [descirption=" + descirption + ", amount=" + amount + ", recipe=" + recipe + "]";
+	public UnitOfMeasure getUom() {
+		return uom;
+	}
+
+	public void setUom(UnitOfMeasure uom) {
+		this.uom = uom;
 	}
 }

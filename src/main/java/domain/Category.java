@@ -1,17 +1,22 @@
 package domain;
 
-import javax.persistence.Entity;
+import java.util.Set;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
-@Entity
-public class unitOfMeasure {
+public class Category {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+
 	private String description;
+
+	@ManyToMany(mappedBy = "categories")
+	private Set<Recipe> recipe;
 
 	public Long getId() {
 		return id;
@@ -27,6 +32,14 @@ public class unitOfMeasure {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public Set<Recipe> getRecipe() {
+		return recipe;
+	}
+
+	public void setRecipe(Set<Recipe> recipe) {
+		this.recipe = recipe;
 	}
 
 }
