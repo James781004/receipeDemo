@@ -1,106 +1,126 @@
 package domain;
-import javax.persistence.*;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Lob;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class recipe {
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    private String description;
-    private Integer prepTime;
-    private Integer cookTime;
-    private Integer servings;
-    private String source;
-    private String url;
-    private String directions;
-    //todo add
-    //private Difficulty difficulty;
+	private String description;
+	private Integer prepTime;
+	private Integer cookTime;
+	private Integer servings;
+	private String source;
+	private String url;
+	private String directions;
+	// todo add
+	// private Difficulty difficulty;
 
-    @Lob
-    private Byte[] image;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
+	private Set<ingredient> ingredients;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    private notes notes;
+	@Lob
+	private Byte[] image;
 
-    public Long getId() {
-        return id;
-    }
+	@OneToOne(cascade = CascadeType.ALL)
+	private notes notes;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public String getDescription() {
-        return description;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+	public String getDescription() {
+		return description;
+	}
 
-    public Integer getPrepTime() {
-        return prepTime;
-    }
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-    public void setPrepTime(Integer prepTime) {
-        this.prepTime = prepTime;
-    }
+	public Integer getPrepTime() {
+		return prepTime;
+	}
 
-    public Integer getCookTime() {
-        return cookTime;
-    }
+	public void setPrepTime(Integer prepTime) {
+		this.prepTime = prepTime;
+	}
 
-    public void setCookTime(Integer cookTime) {
-        this.cookTime = cookTime;
-    }
+	public Integer getCookTime() {
+		return cookTime;
+	}
 
-    public Integer getServings() {
-        return servings;
-    }
+	public void setCookTime(Integer cookTime) {
+		this.cookTime = cookTime;
+	}
 
-    public void setServings(Integer servings) {
-        this.servings = servings;
-    }
+	public Integer getServings() {
+		return servings;
+	}
 
-    public String getSource() {
-        return source;
-    }
+	public void setServings(Integer servings) {
+		this.servings = servings;
+	}
 
-    public void setSource(String source) {
-        this.source = source;
-    }
+	public String getSource() {
+		return source;
+	}
 
-    public String getUrl() {
-        return url;
-    }
+	public void setSource(String source) {
+		this.source = source;
+	}
 
-    public void setUrl(String url) {
-        this.url = url;
-    }
+	public String getUrl() {
+		return url;
+	}
 
-    public String getDirections() {
-        return directions;
-    }
+	public void setUrl(String url) {
+		this.url = url;
+	}
 
-    public void setDirections(String directions) {
-        this.directions = directions;
-    }
+	public String getDirections() {
+		return directions;
+	}
 
-    public Byte[] getImage() {
-        return image;
-    }
+	public void setDirections(String directions) {
+		this.directions = directions;
+	}
 
-    public void setImage(Byte[] image) {
-        this.image = image;
-    }
+	public Byte[] getImage() {
+		return image;
+	}
 
-    public notes getNotes() {
-        return notes;
-    }
+	public void setImage(Byte[] image) {
+		this.image = image;
+	}
 
-    public void setNotes(notes notes) {
-        this.notes = notes;
-    }
+	public notes getNotes() {
+		return notes;
+	}
+
+	public void setNotes(notes notes) {
+		this.notes = notes;
+	}
+
+	public Set<ingredient> getIngredients() {
+		return ingredients;
+	}
+
+	public void setIngredients(Set<ingredient> ingredients) {
+		this.ingredients = ingredients;
+	}
 }
