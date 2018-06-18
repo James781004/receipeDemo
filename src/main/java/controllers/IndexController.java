@@ -1,11 +1,11 @@
-package controller;
+package controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import lombok.extern.slf4j.Slf4j;
-import service.RecipeService;
+import services.RecipeService;
 
 @Slf4j
 @Controller

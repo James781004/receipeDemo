@@ -12,7 +12,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import domain.UnitOfMeasure;
-import repository.UnitOfMeasureRepository;
+import repositories.UnitOfMeasureRepository;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest

@@ -21,9 +21,9 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.ui.Model;
 
-import controller.IndexController;
+import controllers.IndexController;
 import domain.Recipe;
-import service.RecipeService;
+import services.RecipeService;
 
 public class IndexControllerTest {
 

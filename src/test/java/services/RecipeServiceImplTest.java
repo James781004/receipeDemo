@@ -17,10 +17,14 @@ import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import converters.RecipeCommandToRecipe;
+import converters.RecipeToRecipeCommand;
 import domain.Recipe;
-import repository.RecipeRepository;
-import service.RecipeServiceImpl;
+import repositories.RecipeRepository;
 
+/**
+ * Created by jt on 6/17/17.
+ */
 public class RecipeServiceImplTest {
 
 	RecipeServiceImpl recipeService;
@@ -28,11 +32,17 @@ public class RecipeServiceImplTest {
 	@Mock
 	RecipeRepository recipeRepository;
 
+	@Mock
+	RecipeToRecipeCommand recipeToRecipeCommand;
+
+	@Mock
+	RecipeCommandToRecipe recipeCommandToRecipe;
+
 	@Before
 	public void setUp() throws Exception {
 		MockitoAnnotations.initMocks(this);
 
-		recipeService = new RecipeServiceImpl(recipeRepository);
+		recipeService = new RecipeServiceImpl(recipeRepository, recipeCommandToRecipe, recipeToRecipeCommand);
 	}
 
 	@Test

@@ -14,9 +14,9 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import controller.RecipeController;
+import controllers.RecipeController;
 import domain.Recipe;
-import service.RecipeService;
+import services.RecipeService;
 
 public class RecipeControllerTest {
 

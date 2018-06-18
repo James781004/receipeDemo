@@ -1,11 +1,11 @@
-package controller;
+package controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import service.RecipeService;
+import services.RecipeService;
 
 @Controller
 public class RecipeController {

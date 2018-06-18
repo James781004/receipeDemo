@@ -17,9 +17,9 @@ import domain.Notes;
 import domain.Recipe;
 import domain.UnitOfMeasure;
 import lombok.extern.slf4j.Slf4j;
-import repository.CategoryRepository;
-import repository.RecipeRepository;
-import repository.UnitOfMeasureRepository;
+import repositories.CategoryRepository;
+import repositories.RecipeRepository;
+import repositories.UnitOfMeasureRepository;
 
 @Slf4j
 @Component
