@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import commands.IngredientCommand;
+import commands.RecipeCommand;
+import commands.UnitOfMeasureCommand;
 import lombok.extern.slf4j.Slf4j;
 import services.IngredientService;
 import services.RecipeService;
@@ -49,6 +51,28 @@ public class IngredientController {
 	}
 
 	@GetMapping
+	@RequestMapping("recipe/{recipeId}/ingredient/new")
+	public String newIngredient(@PathVariable String recipeId, Model model) {
+
+		// make sure we have a good id value
+		@SuppressWarnings("unused")
+		RecipeCommand recipeCommand = recipeService.findCommandById(Long.valueOf(recipeId));
+		// todo raise exception if null
+
+		// need to return back parent id for hidden form property
+		IngredientCommand ingredientCommand = new IngredientCommand();
+		ingredientCommand.setRecipeId(Long.valueOf(recipeId));
+		model.addAttribute("ingredient", ingredientCommand);
+
+		// init uom
+		ingredientCommand.setUom(new UnitOfMeasureCommand());
+
+		model.addAttribute("uomList", unitOfMeasureService.listAllUoms());
+
+		return "recipe/ingredient/ingredientform";
+	}
+
+	@GetMapping
 	@RequestMapping("recipe/{recipeId}/ingredient/{id}/update")
 	public String updateRecipeIngredient(@PathVariable String recipeId, @PathVariable String id, Model model) {
 		model.addAttribute("ingredient",
@@ -67,5 +91,4 @@ public class IngredientController {
 
 		return "redirect:/recipe/" + savedCommand.getRecipeId() + "/ingredient/" + savedCommand.getId() + "/show";
 	}
-
 }
